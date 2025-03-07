@@ -1,15 +1,54 @@
-// 이전에 배운 객체는 키-값 쌍인 값을 그룹으로 묶는 거
-// 배열은 목록을 생성하는 것
-const hobbies = ["Sports", "Cooking", "Reading"];
-console.log(hobbies[0]);
+// 배열 디스트럭처링
+// 기존 방식
+const array = [1, 2, 3];
+const a = array[0];
+const b = array[1];
+const c = array[2];
 
-hobbies.push("Working");
-console.log(hobbies);
+// 디스트럭처링 방식
+const [a, b, c] = [1, 2, 3];
+console.log(a); // 1
+console.log(b); // 2
+console.log(c); // 3
 
-// 배열이 제공하는 findIndex 함수는 모든 원소를 돌려 내부에서 정의한 내용에 따라 값을 return 한다. 해당 값을 가진 index 존재 -> index 반환, 아니면 false
-const index = hobbies.findIndex((item) => item === "Sports");
-console.log(index);
+// 일부 값만 가져오기
+const [a, , c] = [1, 2, 3]; // b 위치 건너뛰기
+console.log(a, c); // 1, 3
 
-// 배열이 제공하는 map 함수는 새로운 값을 생성하여 반환한다.
-const editedHobbies = hobbies.map((item) => ({ text: item }));
-console.log(editedHobbies);
+// 나머지 연산자 사용
+const [first, ...rest] = [1, 2, 3, 4];
+console.log(first); // 1
+console.log(rest); // [2, 3, 4]
+
+// 객체 디스트럭처링
+// 기존 방식
+const person = { name: '홍길동', age: 30 };
+const name = person.name;
+const age = person.age;
+
+// 디스트럭처링 방식
+const { name, age } = { name: '홍길동', age: 30 };
+console.log(name); // '홍길동'
+console.log(age); // 30
+
+// 변수명 변경하기
+const { name: userName, age: userAge } = { name: '홍길동', age: 30 };
+console.log(userName); // '홍길동'
+console.log(userAge); // 30
+
+// 기본값 설정
+const { name, age, job = '개발자' } = { name: '홍길동', age: 30 };
+console.log(job); // '개발자'
+
+// 함수
+// 객체 매개변수 디스트럭처링
+function printPerson({ name, age }) {
+    console.log(`이름: ${name}, 나이: ${age}`);
+}
+printPerson({ name: '홍길동', age: 30 }); // 이름: 홍길동, 나이: 30
+
+// 배열 매개변수 디스트럭처링
+function printCoordinates([x, y]) {
+    console.log(`X: ${x}, Y: ${y}`);
+}
+printCoordinates([10, 20]); // X: 10, Y: 20
