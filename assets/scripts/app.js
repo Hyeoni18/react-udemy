@@ -1,32 +1,15 @@
-// 객체 생성
-const user = {
-    name: 'Max',
-    age: 20,
-    greet() {
-        console.log('Hi');
-        // 객체 내부 프로퍼티 접근 가능
-        console.log(this.age);
-    }
-}
+// 이전에 배운 객체는 키-값 쌍인 값을 그룹으로 묶는 거
+// 배열은 목록을 생성하는 것
+const hobbies = ["Sports", "Cooking", "Reading"];
+console.log(hobbies[0]);
 
-console.log(user.name); // Max
-user.greet(); // Hi
+hobbies.push("Working");
+console.log(hobbies);
 
-// 블루 프린트
-class User {
-    // 생성자를 통해 블루프린트 내 객체 값을 생성할 수 있음
-    constructor(name, age) {
-        this.name = name;
-        this.age = age;
-    }
-    greet() {
-        console.log(' Hello-!');
-    }
-}
+// 배열이 제공하는 findIndex 함수는 모든 원소를 돌려 내부에서 정의한 내용에 따라 값을 return 한다. 해당 값을 가진 index 존재 -> index 반환, 아니면 false
+const index = hobbies.findIndex((item) => item === "Sports");
+console.log(index);
 
-// 위에서 생성한 User 블루프린트를 인스턴스화
-const user1 = new User('Manuel', 22);
-console.log(user1);
-user1.greet();
-
-// 강의에서 class 키워드를 자주 사용하진 않을거지만 알아둬야 함
+// 배열이 제공하는 map 함수는 새로운 값을 생성하여 반환한다.
+const editedHobbies = hobbies.map((item) => ({ text: item }));
+console.log(editedHobbies);
