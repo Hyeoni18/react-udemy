@@ -1,54 +1,62 @@
-// 배열 디스트럭처링
-// 기존 방식
-const array = [1, 2, 3];
-const a = array[0];
-const b = array[1];
-const c = array[2];
+// 스프레드 연산자
+// const hobbies = ["Sports", "Cooking"];
+// const user = {
+//   name: "Max",
+//   age: 34
+// };
+//
+// const newHobbies = ["Reading"];
+//
+// const mergedHobbies = [...hobbies, ...newHobbies];
+// console.log(mergedHobbies);
+//
+// const extendedUser = {
+//   isAdmin: true,
+//   ...user
+// };
+// console.log(extendedUser);
 
-// 디스트럭처링 방식
-const [a, b, c] = [1, 2, 3];
-console.log(a); // 1
-console.log(b); // 2
-console.log(c); // 3
+// 컨트롤 구조 (if, for...in, for...of)
+const password = prompt("Your password");
 
-// 일부 값만 가져오기
-const [a, , c] = [1, 2, 3]; // b 위치 건너뛰기
-console.log(a, c); // 1, 3
-
-// 나머지 연산자 사용
-const [first, ...rest] = [1, 2, 3, 4];
-console.log(first); // 1
-console.log(rest); // [2, 3, 4]
-
-// 객체 디스트럭처링
-// 기존 방식
-const person = { name: '홍길동', age: 30 };
-const name = person.name;
-const age = person.age;
-
-// 디스트럭처링 방식
-const { name, age } = { name: '홍길동', age: 30 };
-console.log(name); // '홍길동'
-console.log(age); // 30
-
-// 변수명 변경하기
-const { name: userName, age: userAge } = { name: '홍길동', age: 30 };
-console.log(userName); // '홍길동'
-console.log(userAge); // 30
-
-// 기본값 설정
-const { name, age, job = '개발자' } = { name: '홍길동', age: 30 };
-console.log(job); // '개발자'
-
-// 함수
-// 객체 매개변수 디스트럭처링
-function printPerson({ name, age }) {
-    console.log(`이름: ${name}, 나이: ${age}`);
+if (password === "Hello") {
+  console.log("Hello works");
+} else if (password === "hello") {
+  console.log("hello works");
+} else {
+  console.log("Access not granted.");
 }
-printPerson({ name: '홍길동', age: 30 }); // 이름: 홍길동, 나이: 30
 
-// 배열 매개변수 디스트럭처링
-function printCoordinates([x, y]) {
-    console.log(`X: ${x}, Y: ${y}`);
+const hobbies = ["Sports", "Cooking"];
+
+for (const hobby of hobbies) {
+  console.log(hobby);
 }
-printCoordinates([10, 20]); // X: 10, Y: 20
+
+function handleTimeout() {
+  console.log("Timed out!");
+}
+
+const handleTimeout2 = () => {
+  console.log("Timed out ... again!");
+};
+
+// setTimeout 정의 함수 사용
+// handleTimeout() 작성하면 함수가 바로 실행되어 반환 값을 실행하게 됨
+// 함수를 직접 실행할 수 있도록 괄호를 빼고 작성
+setTimeout(handleTimeout, 2000);
+setTimeout(handleTimeout2, 3000);
+setTimeout(() => {
+  console.log("More timing out...");
+}, 4000);
+
+// 함수 안에 다른 함수 정의 (바닐라 JS 에선 부적합 할지라도 리액트에선 적합)
+function init() {
+  function greet() {
+    console.log('Hi!');
+  }
+
+  greet();
+}
+
+init();
